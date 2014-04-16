@@ -11,11 +11,9 @@ package DepthChart;
  */
 public class Player implements Comparable<Player> {
     
-    String name;
-    String position;
-    int rating;
-    String year;
-    String redshirt;
+    String name, position, year, redshirt;
+    int rating, chartNum;
+    
     
     Player(){
         
@@ -72,6 +70,14 @@ public class Player implements Comparable<Player> {
     
     public String getYear(){
         return year;
+    }
+    
+    public void setChartNum(int num){
+        chartNum = num;
+    }
+    
+    public int getChartNum(){
+        return chartNum;
     }
     
     public String toString(){
