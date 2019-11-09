@@ -32,7 +32,7 @@ public class DepthChartGUI2 extends JDialog{
 	DefaultTableModel qbModel, hbModel, fbModel, teModel, wrModel, gModel, cModel, tModel, deModel, dtModel, mlbModel, olbModel, 
 				      cbModel, fsModel, ssModel, pModel , kModel;
 	
-public DepthChartGUI2(Frame AddPlayerGUI){
+public DepthChartGUI2(ModalityType documentModal){
     
 		qbModel = new DefaultTableModel(headers, 10);
 		hbModel = new DefaultTableModel(headers, 10);
@@ -180,14 +180,16 @@ public DepthChartGUI2(Frame AddPlayerGUI){
         
         pane.add(tab);
     
-        setTitle("NCAA 14 Depth this");
+        setTitle("NCAA 14 Depth Chart");
         setSize(1000,500);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
     
 
 }
+
+
 
 	public void resetNums(){
 		qbNum = 0;
@@ -360,4 +362,6 @@ public DepthChartGUI2(Frame AddPlayerGUI){
         
         
     }
+    
+
 }

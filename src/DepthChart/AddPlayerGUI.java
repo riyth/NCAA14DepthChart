@@ -21,14 +21,13 @@ public class AddPlayerGUI extends JFrame {
     String year;
     int rating, qbNum, hbNum, fbNum, teNum, wrNum, tNum, gNum, cNum, deNum, dtNum, olbNum, mlbNum, cbNum, fsNum, ssNum, pNum, kNum;
     PositionLists list = new PositionLists();
-    DepthChartGUI2 chart = new DepthChartGUI2(this);
-    Database db = null;
+      Database db = null;
     
     
     
     public AddPlayerGUI() {
        
-        chart.setVisible(false);
+    
         Container pane = getContentPane();
         mainPanel = new JPanel(new GridLayout(4,2));
         southPanel = new JPanel(new GridLayout(1,4));
@@ -98,9 +97,9 @@ public class AddPlayerGUI extends JFrame {
         
         
         
-        setTitle("NCAA 14 Depth Chart");
+        setTitle("Add/Remove Players");
         setSize(500, 190);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         
@@ -141,15 +140,19 @@ public class AddPlayerGUI extends JFrame {
     private class viewChartButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
            
+        	DepthChartGUI2 chart = new DepthChartGUI2(null);
+        	
             try {
+            	
 				db.getInfo(chart);
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
-				
+				System.out.print("Testing");
 				e1.printStackTrace();
-				chart.setVisible(true);
+				
 			}
-            chart.setVisible(true);
+            chart.setVisible(true);;
+			dispose();
             
         }
     }
@@ -157,7 +160,7 @@ public class AddPlayerGUI extends JFrame {
     private class removeButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
             name = nameTF.getText();
-            
+            DepthChartGUI2 chart = new DepthChartGUI2(null);
             try {
 				db.removePlayer(name, chart);
 				errorArea.setText("Player " + name + " has been removed from the depth chart.");
@@ -170,7 +173,7 @@ public class AddPlayerGUI extends JFrame {
         
     private class clearButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
-        
+        	DepthChartGUI2 chart = new DepthChartGUI2(null);
         	String confirm = JOptionPane.showInputDialog("Are you sure you want to clear the database? \nType yes in the field below "
         			+ "to clear.");
         	
@@ -190,8 +193,5 @@ public class AddPlayerGUI extends JFrame {
         }
     
     
-     public static void main(String args[]) {
-        new AddPlayerGUI();
-        
-    }
+   
 }
